@@ -30,7 +30,8 @@ def download_file(url, subdir):
     if os.path.exists(dest):
         return
 
-    os.makedirs(destdir, exist_ok=True)
+    if not os.path.exists(destdir):
+        os.makedirs(destdir)
 
     info("get " + url)
     r = urlopen(url)
